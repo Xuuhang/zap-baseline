@@ -35,5 +35,3 @@ RUN chown zap:zap /zap/zap-baseline-custom.py  && \
 		chmod +x /zap/zap-baseline-custom.py
 
 WORKDIR /zap
-
-USER zap

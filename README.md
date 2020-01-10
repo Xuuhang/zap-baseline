@@ -1,3 +1,5 @@
+Fork to deploy on docker hub
+
 # Owasp ZAP with support for authentication
 With the new [hook mechanism](https://github.com/zaproxy/zaproxy/issues/4925) in the ZAP Docker images authentication can implemented more easily compared to the original [implementation](https://github.com/ICTU/zap-baseline/blob/master/zap-baseline-custom.py).
 
