@@ -5,6 +5,21 @@ LABEL maintainer="Dick Snel <dick.snel@ictu.nl>"
 
 USER root
 
+# Installation Ruby
+RUN apt-get update && \
+  apt-get install -y curl gnupg build-essential && \
+  curl -sSL https://rvm.io/mpapis.asc | gpg --import && \
+  curl -sSL https://rvm.io/pkuczynski.asc | gpg --import && \
+  curl -sSL https://get.rvm.io | bash -s stable && \
+  source /etc/profile.d/rvm.sh && \
+  rvm requirements && \
+  rvm install ruby-2.6.3
+
+# Installation Apache2 & passenger & some dependencies
+RUN apt-get install apache2 apache2-dev nodejs libmysqlclient-dev libcurl4-openssl-dev && \
+  gem install passenger -v ">= 6.0" && \
+  passenger-install-apache2-module -a --languages 'ruby'
+
 # Install Selenium compatible firefox
 RUN apt-get -y remove firefox
 
