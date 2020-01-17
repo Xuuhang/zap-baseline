@@ -11,7 +11,7 @@ RUN apt-get install -y curl gnupg build-essential
 RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import
 RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import
 RUN curl -sSL https://get.rvm.io | bash -s stable
-RUN source /etc/profile.d/rvm.sh
+RUN /etc/profile.d/rvm.sh
 RUN rvm requirements
 RUN rvm install ruby-2.6.3
 
