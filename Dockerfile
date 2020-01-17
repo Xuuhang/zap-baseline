@@ -8,8 +8,8 @@ USER root
 # Installation Ruby
 RUN apt-get update
 RUN apt-get install -y curl gnupg build-essential
-#RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import
-#RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import
+RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import
+RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import
 RUN curl -sSL https://get.rvm.io | bash -s stable
 #RUN source /etc/profile.d/rvm.sh
 RUN /bin/bash -l -c "rvm requirements"
