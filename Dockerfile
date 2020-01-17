@@ -17,8 +17,8 @@ RUN /bin/bash -l -c "rvm install ruby-2.6.3"
 
 # Install Apache2 & passenger & some dependencies
 RUN apt-get install -y apache2 apache2-dev nodejs libmysqlclient-dev libcurl4-openssl-dev
-RUN gem install passenger -v ">= 6.0"
-RUN passenger-install-apache2-module -a --languages 'ruby'
+RUN /bin/bash -l -c "gem install passenger -v '>= 6.0'"
+RUN passenger-install-apache2-module -a --languages "ruby"
 
 # Install Selenium compatible firefox
 RUN apt-get -y remove firefox
