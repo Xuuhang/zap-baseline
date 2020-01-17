@@ -16,7 +16,7 @@ RUN /bin/bash -l -c "rvm requirements"
 RUN /bin/bash -l -c "rvm install ruby-2.6.3"
 
 # Installation Apache2 & passenger & some dependencies
-RUN apt-get install apache2 apache2-dev nodejs libmysqlclient-dev libcurl4-openssl-dev && \
+RUN apt-get install -y apache2 apache2-dev nodejs libmysqlclient-dev libcurl4-openssl-dev && \
   gem install passenger -v ">= 6.0" && \
   passenger-install-apache2-module -a --languages 'ruby'
 
