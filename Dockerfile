@@ -4,6 +4,7 @@ FROM owasp/zap2docker-weekly
 LABEL maintainer="Dick Snel <dick.snel@ictu.nl>"
 
 USER root
+RUN /bin/bash
 
 # Install Ruby
 RUN apt-get update
@@ -12,13 +13,13 @@ RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import
 RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import
 RUN curl -sSL https://get.rvm.io | bash -s stable
 #RUN source /etc/profile.d/rvm.sh
-RUN /bin/bash -l -c "rvm requirements"
+RUN rvm requirements
 RUN /bin/bash -l -c "rvm install ruby-2.6.3"
 
 # Install Apache2 & passenger & some dependencies
 RUN apt-get install -y apache2 apache2-dev nodejs libmysqlclient-dev libcurl4-openssl-dev
-RUN /bin/bash -l -c "gem install passenger -v '>= 6.0'"
-RUN passenger-install-apache2-module -a --languages "ruby"
+RUN /bin/bash -l -c 'gem install passenger -v ">= 6.0"'
+RUN /bin/bash -l -c passenger-install-apache2-module -a --languages 'ruby'
 
 # Install Selenium compatible firefox
 RUN apt-get -y remove firefox
