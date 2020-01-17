@@ -8,13 +8,12 @@ USER root
 # Installation Ruby
 RUN apt-get update
 RUN apt-get install -y curl gnupg build-essential
-RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import
-RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import
+#RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import
+#RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import
 RUN curl -sSL https://get.rvm.io | bash -s stable
-RUN source /etc/bash.bashrc
-RUN source /etc/profile.d/rvm.sh
-RUN rvm requirements
-RUN rvm install ruby-2.6.3
+#RUN source /etc/profile.d/rvm.sh
+RUN /bin/bash -l -c "rvm requirements"
+RUN /bin/bash -l -c "rvm install ruby-2.6.3"
 
 # Installation Apache2 & passenger & some dependencies
 RUN apt-get install apache2 apache2-dev nodejs libmysqlclient-dev libcurl4-openssl-dev && \
